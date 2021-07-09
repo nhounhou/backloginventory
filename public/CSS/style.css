@@ -1,0 +1,135 @@
+body {
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+h1 {
+    text-align: center;
+    border: 2px solid black;
+    padding: 30px;
+    background-color: aquamarine;
+}
+
+button, input, .header {
+    /* margin-top: 20px; */
+    margin-bottom: 20px;
+}
+
+button {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#addPallet {
+    background-color: green;
+}
+
+#subPallet {
+    background-color: orange;
+}
+
+#modal-btn {
+  background-color: greenyellow;
+}
+
+#modal-sub-btn {
+  background-color: orange;
+}
+
+.hidden {
+  display: none;
+}
+
+.shown {
+  display: inline-block;
+}
+
+.classBody {
+  margin: 20px;
+}
+
+.modal {
+    display: none;
+    position: fixed; 
+    padding-top: 50px;
+    left: 0; 
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .modal-content {
+    position: relative; 
+    background-color: white;
+    padding: 20px; 
+    margin: auto; 
+    width: 75%;  
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+  }
+  
+  .close-btn {
+    float: right; 
+    color: lightgray; 
+    font-size: 24px;  
+    font-weight: bold;
+  }
+
+  .close-btn:hover {
+    color: darkgray;
+  }
+  @-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+  }
+  @keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+  }
+
+  .modal-sub {
+    display: none;
+    position: fixed; 
+    padding-top: 50px;
+    left: 0; 
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-sub-content {
+    position: relative; 
+    background-color: chocolate;
+    padding: 20px; 
+    margin: auto; 
+    width: 75%;  
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+  }
+  
+  .modal-sub-btn {
+    float: right; 
+    color: lightgray; 
+    font-size: 24px;  
+    font-weight: bold;
+  }
+  
+  .close-sub-btn:hover {
+    color: darkgray;
+  }
+  @-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+  }
+  @keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+  }
