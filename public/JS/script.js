@@ -60,16 +60,19 @@ $(document).ready(function() {
         // });
 
         // getting random pictures from folder Public/Pictures
-            var randPic=Math.floor(Math.random() * pictureArray.length);
-            var img=$("<img>");
-            var imgURL=pictureArray[randPic];
-            var imgDesc=pictureArray[randPic];
-            // console.log(pictureArray[randPic])
-            img.attr("src",'../pictures/'+imgURL);
-            img.attr("alt",imgDesc);
-            // img.attr("width",'100%');
-            // img.attr("heigth",'200px');
-            $(".row-image").append(img);
+            for (var i=1;i<5;i++){
+                var randPic=Math.floor(Math.random() * pictureArray.length);
+                var img=$("<img>");
+                var imgURL=pictureArray[randPic];
+                var imgDesc=pictureArray[randPic];
+                // console.log(pictureArray[randPic])
+                img.attr('src','../pictures/'+imgURL);
+                img.attr('alt',imgDesc);
+                img.attr('class','hover_effect');
+                // img.attr("width",'100%');
+                // img.attr("heigth",'200px');
+                $(".row-image"+i.toString()).append(img);
+            }
             $('#photoTag').text(pictureArray[randPic])
             $('#photoHREF').attr('href','http://www.lenovo.com')
             $('#photoHREF').attr('target','_blank')
