@@ -60,22 +60,31 @@ $(document).ready(function() {
         // });
 
         // getting random pictures from folder Public/Pictures
-            for (var i=1;i<5;i++){
-                var randPic=Math.floor(Math.random() * pictureArray.length);
-                var img=$("<img>");
-                var imgURL=pictureArray[randPic];
-                var imgDesc=pictureArray[randPic];
-                // console.log(pictureArray[randPic])
-                img.attr('src','../pictures/'+imgURL);
-                img.attr('alt',imgDesc);
-                img.attr('class','hover_effect');
-                // img.attr("width",'100%');
-                // img.attr("heigth",'200px');
-                $(".row-image"+i.toString()).append(img);
+        var displayPicture=[];
+        for (var i=1;i<5;i++){
+            var randPic=Math.floor(Math.random() * pictureArray.length);
+            var img=$("<img>");
+            var imgURL=pictureArray[randPic];
+            var imgDesc=pictureArray[randPic];
+
+            // loop to get new random picture number if already been saved in the Picture array
+            while (displayPicture.indexOf(randPic) > -1) {
+                // alert('before duplicate picture',randPic)
+                randPic=Math.floor(Math.random() * pictureArray.length);
+                // alert('New random picture',randPic)
+                imgURL=pictureArray[randPic];
+                imgDesc=pictureArray[randPic];    
             }
-            $('#photoTag').text(pictureArray[randPic])
-            $('#photoHREF').attr('href','http://www.lenovo.com')
-            $('#photoHREF').attr('target','_blank')
+
+            displayPicture.push(randPic)
+            img.attr('src','../pictures/'+imgURL);
+            img.attr('alt',imgDesc);
+            img.attr('class','hover_effect');
+            $(".row-image"+i.toString()).append(img);
+        }
+        $('#photoTag').text(pictureArray[randPic])
+        $('#photoHREF').attr('href','http://www.lenovo.com')
+        $('#photoHREF').attr('target','_blank')
     }
 
     displayPhoto()
