@@ -67,8 +67,8 @@ $(document).ready(function() {
             // console.log(pictureArray[randPic])
             img.attr("src",'../pictures/'+imgURL);
             img.attr("alt",imgDesc);
-            img.attr("width",'350');
-            img.attr("heigth",'500');
+            // img.attr("width",'100%');
+            // img.attr("heigth",'200px');
             $(".row-image").append(img);
             $('#photoTag').text(pictureArray[randPic])
             $('#photoHREF').attr('href','http://www.lenovo.com')
