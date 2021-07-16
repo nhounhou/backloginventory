@@ -71,7 +71,7 @@ $(document).ready(function() {
             img.attr("heigth",'500');
             $(".row-image").append(img);
             $('#photoTag').text(pictureArray[randPic])
-            $('#photoHREF').attr('href','../pictures/'+pictureArray[randPic])
+            $('#photoHREF').attr('href','http://www.lenovo.com')
             $('#photoHREF').attr('target','_blank')
     }
 
