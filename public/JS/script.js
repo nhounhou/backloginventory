@@ -2,31 +2,77 @@
 
 $(document).ready(function() {
     // var city=prompt("name of the city?");
+
+    const pictureArray=[
+        '2560x1080-Bento.png',
+        '2560x1080-MoMA.png',
+        '2560x1080-Rocket.png',
+        '2560x1080-Satellite.png',
+        '2560x1080-Spill.png',
+        'amusement park.jpg',
+        'blue green building.jpg',
+        'Blue-Ink-Splash.jpg',
+        'BrandCalendar_wallpaper_JanFeb19_2560x1600.png',
+        'Bubbles.jpg',
+        'Color-Light-Waves.jpg',
+        'Color-Splash.jpg',
+        'Cool-Embers.jpg',
+        'Eh8hK6ew_jpeg.jpg',
+        'FiberOptics.jpg',
+        'Flutter.jpg',
+        'GLASS-BUILDING.jpeg',
+        'Hexagon.jpg',
+        'Idea_wallpaper_1920x1200.jpg',
+        'Luminous.jpg',
+        'Network-Cables.jpg',
+        'Night_Low-Res.jpg',
+        'Platonic.jpg',
+        'Spinning.jpg',
+        'TrackPoint-Stems.jpg',
+        'WABS6uYA_jpeg.jpg'
+    ]
+
     function displayPhoto() {
-        var apiKey="19788868-06966a58fd331eafcc5fbc91d";
-        var queryURL="https://pixabay.com/api/?key="+apiKey+"&q=lenovo&image_type=photo";
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        }).then(function(response){
-            // console.log(response);
-            var randPic=Math.floor(Math.random() * response.hits.length);
-            // console.log(randPic);
-            if (response.total>0){
-                var img=$("<img>");
-                var imgURL=response.hits[randPic].largeImageURL;
-                var imgDesc=response.hits[randPic].tags;
-                // console.log(response.hits[randPic])
-                img.attr("src",imgURL);
-                img.attr("alt",imgDesc);
-                img.attr("width",'200');
-                img.attr("heigth",'450');
-                $(".row-image").append(img);
-                $('#photoTag').text(response.hits[randPic].tags)
-                $('#photoHREF').attr('href',response.hits[randPic].pageURL)
-                $('#photoHREF').attr('target','_blank')
-            };
-        });
+        // //API call to get a random picture from Pixabay
+        // var apiKey="19788868-06966a58fd331eafcc5fbc91d";
+        // var queryURL="https://pixabay.com/api/?key="+apiKey+"&q=lenovo&image_type=photo";
+        // $.ajax({
+        //     url: queryURL,
+        //     method: "GET"
+        // }).then(function(response){
+        //     // console.log(response);
+        //     var randPic=Math.floor(Math.random() * response.hits.length);
+        //     // console.log(randPic);
+        //     if (response.total>0){
+        //         var img=$("<img>");
+        //         var imgURL=response.hits[randPic].largeImageURL;
+        //         var imgDesc=response.hits[randPic].tags;
+        //         // console.log(response.hits[randPic])
+        //         img.attr("src",imgURL);
+        //         img.attr("alt",imgDesc);
+        //         img.attr("width",'200');
+        //         img.attr("heigth",'450');
+        //         $(".row-image").append(img);
+        //         $('#photoTag').text(response.hits[randPic].tags)
+        //         $('#photoHREF').attr('href',response.hits[randPic].pageURL)
+        //         $('#photoHREF').attr('target','_blank')
+        //     };
+        // });
+
+        // getting random pictures from folder Public/Pictures
+            var randPic=Math.floor(Math.random() * pictureArray.length);
+            var img=$("<img>");
+            var imgURL=pictureArray[randPic];
+            var imgDesc=pictureArray[randPic];
+            // console.log(pictureArray[randPic])
+            img.attr("src",'../pictures/'+imgURL);
+            img.attr("alt",imgDesc);
+            img.attr("width",'350');
+            img.attr("heigth",'500');
+            $(".row-image").append(img);
+            $('#photoTag').text(pictureArray[randPic])
+            $('#photoHREF').attr('href','../pictures/'+pictureArray[randPic])
+            $('#photoHREF').attr('target','_blank')
     }
 
     displayPhoto()
