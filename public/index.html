@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>NRC BackLog Design Test</title>
+        <title>NRC BackLog Map</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
         <link rel="stylesheet" href="./CSS/style.css" />
@@ -16,7 +16,7 @@
             </div>
             <div class='col-sm-2'>
                 <div class="row">
-                    <h2>Pallet Quantity</h2>
+                    <h3>Pallet Quantity</h3>
                 </div>
                 <div class="row">
                     <h3 id='PalletQty'></h3>
@@ -27,7 +27,7 @@
                     <a>
                         <div>
                             <!-- <img id='lenovo' src='/pictures/LenovoLogos.jpg'> -->
-                            <h1>Your NRC Logo Here</h1>
+                            <h2>Your NRC Logo Here</h2>
                         </div>
                     </a>
                 </div>
@@ -55,6 +55,7 @@
             <!-- <button id="addPallet">Add Pallet</button> -->
             <button id="modal-sub-btn">Remove Pallet</button>
             <button id="modal-btn">Add Pallet</button>
+            <button id="modal-lane-btn">Lane Priority</button>
             <div class="modal">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -91,7 +92,28 @@
                             <!-- <p>this is the text inside the modal</p> -->
                             <button id='subPallet'>Delete</button>
                         </div>
-                    s</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-lane">
+                <div class="modal-lane-content">
+                    <div class="modal-lane-header">
+                        <h1>Setup Lane Priority</h1>
+                        <span class="close-lane-btn">&times;</span>
+                    </div>
+                    <div class="row">
+                        <div class="modal-lane-content">
+                            <!-- <p>this is the text inside the modal</p> -->
+                            <button id='priorityLane1'>Lane 1</button>
+                            <button id='priorityLane2'>Lane 2</button>
+                            <button id='priorityLane3'>Lane 3</button>
+                            <button id='priorityLane4'>Lane 4</button>
+                            <button id='priorityLane5'>Lane 5</button>
+                            <button id='priorityLane6'>Lane 6</button>
+                            <button id='priorityLane7'>Lane 7</button>
+                            <button id='clearPriority'>Clear</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div> 

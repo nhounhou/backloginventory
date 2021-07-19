@@ -82,7 +82,7 @@ $(document).ready(function() {
             img.attr('class','hover_effect');
             $(".row-image"+i.toString()).append(img);
         }
-        $('#photoTag').text(pictureArray[randPic])
+        // $('#photoTag').text(pictureArray[randPic])
         $('#photoHREF').attr('href','http://www.lenovo.com')
         $('#photoHREF').attr('target','_blank')
     }
@@ -142,6 +142,22 @@ $(document).ready(function() {
         }
     }
 
+    //section to declare the Modal Form
+    let modalLaneBtn = document.getElementById("modal-lane-btn")
+    let modalLane = document.querySelector(".modal-lane")
+    let closeLaneBtn = document.querySelector(".close-lane-btn")
+    modalLaneBtn.onclick = function(){
+        modalLane.style.display = "block"
+    }
+    closeLaneBtn.onclick = function(){
+        modalLane.style.display = "none"
+    }
+    window.onclick = function(e){
+        if(e.target == modalLane){
+            modalLane.style.display = "none"
+        }
+    }
+
     function initPallet(pallet) {
         console.log('initPallet',pallet)
         for (var i=0;i<pallet.length;i++){
@@ -160,9 +176,9 @@ $(document).ready(function() {
             }
             // console.log('delay day',daysDifference)
             let palletColor='';
-            if (daysDifference>20) {
+            if (daysDifference>10) {
                 palletColor="palevioletred"
-            } else if (daysDifference>10) {
+            } else if (daysDifference>5) {
                 palletColor="orange"
             } else {
                 palletColor="lightseagreen"
@@ -556,45 +572,6 @@ $(document).ready(function() {
         // getPallet()
     });
 
-    // $("#addPallet").click(function(){
-    //     // console.log("PalletScan",palletNum[0].value)
-    //     // console.log("Add Pallet clicked!!!")
-    //     // console.log("lane1",laneNum1[0].children)
-
-    //     if (palletNum[0].value.length === 0){
-    //         console.log("No Scan Pallet Name for Creation")
-    //         return
-    //     }
-
-    //     if (isLane1Full === false){
-    //         createPallet('1')
-    //     } else {
-    //         if (isLane2Full === false){
-    //             createPallet('2')
-    //         } else {
-    //             if (isLane3Full === false){
-    //                 createPallet('3')
-    //             } else {
-    //                 if (isLane4Full === false){
-    //                     createPallet('4')
-    //                 } else {
-    //                     if (isLane5Full === false){
-    //                         createPallet('5')
-    //                     } else {
-    //                         if (isLane6Full === false){
-    //                             createPallet('6')
-    //                         } else {
-    //                             if (isLane7Full === false){
-    //                                 createPallet('7')
-    //                             }
-    //                         }
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    // });
-
     const removePallet = (palletID) => {
         console.log('removePallet')
         fetch(`/api/pallets/${palletID}`, {
@@ -660,17 +637,6 @@ $(document).ready(function() {
                         isLane7Full=false
                         break;  
                 }
-
-                // getPallet()
-                // //remove empty "slot"/removed pallet from the array
-                // // convert JSON to an array
-                // var realArray = $.makeArray( myData )
-                // console.log('data',realArray)                
-                // // Now it can be used reliably with $.map()
-                // $.map( realArray, function( val ) {
-                //     return realArray.name = val;
-                // })
-                // // window.location.href = '/';
                 return
             } else {
                 alert(`pallet not found`)
@@ -692,4 +658,65 @@ $(document).ready(function() {
 
         searchPallet(palletName)
     });
+
+    const priorityLane = (laneNB) => {
+        if(laneNB===0){
+            for (var i=1;i<8;i++){
+                $('.lane'+i.toString()).css('background-color','white')
+            }
+        } else {
+            for (var i=1;i<8;i++){
+                if (i===laneNB){
+                    console.log('red',i)
+                    $('.lane'+i.toString()).css('background-color','cyan')
+                } else {
+                    console.log('red',i)
+                    $('.lane'+i.toString()).css('background-color','white')
+                }
+            }
+        }
+        return
+    };
+
+    $('#clearPriority').click(function(){
+        // console.log('lane7 clicked')
+        priorityLane(0)
+        // getPallet()
+    });
+    $('#priorityLane1').click(function(){
+        // console.log('lane7 clicked')
+        priorityLane(1)
+        // getPallet()
+    });
+    $('#priorityLane2').click(function(){
+        // console.log('lane7 clicked')
+        priorityLane(2)
+        // getPallet()
+    });
+    $('#priorityLane3').click(function(){
+        // console.log('lane7 clicked')
+        priorityLane(3)
+        // getPallet()
+    });
+    $('#priorityLane4').click(function(){
+        // console.log('lane7 clicked')
+        priorityLane(4)
+        // getPallet()
+    });
+    $('#priorityLane5').click(function(){
+        // console.log('lane7 clicked')
+        priorityLane(5)
+        // getPallet()
+    });
+    $('#priorityLane6').click(function(){
+        // console.log('lane7 clicked')
+        priorityLane(6)
+        // getPallet()
+    });
+    $('#priorityLane7').click(function(){
+        // console.log('lane7 clicked')
+        priorityLane(7)
+        // getPallet()
+    });
+
 });
