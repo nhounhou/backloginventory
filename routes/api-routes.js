@@ -4,6 +4,11 @@ const db = require('../models');
 // Routes
 // =============================================================
 module.exports = (app) => {
+  // GET route for getting all of the lanes priority
+  app.get('/api/lanes/', (req, res) => {
+    db.Lane.findAll({}).then((dbLane) => res.json(dbLane));
+  });
+
   // GET route for getting all of the pallets
   // console.log("db:",db.sequelize.options)
   app.get('/api/pallets/', (req, res) => {
@@ -19,7 +24,7 @@ module.exports = (app) => {
   //   }).then((dbPost) => {
   //     res.json(dbPost);
   //   });
-  // });5
+  // });
 
   // Get route for retrieving a single pallet by ID
   app.get('/api/pallets/:id', (req, res) => {
@@ -41,13 +46,22 @@ module.exports = (app) => {
 
   // POST route for saving a new post
   app.post('/api/pallets', (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     db.Pallet.create({
       name: req.body.name,
       comment: req.body.comment,
       date: req.body.date,
       location: req.body.location,
     }).then((dbPallet) => res.json(dbPallet));
+  });
+
+  // POST route for saving a new post
+  app.post('/api/lanes', (req, res) => {
+    console.log('POST Lane',req.body);
+    db.Lane.create({
+      name: req.body.name,
+      isPriority: req.body.isPriority,
+    }).then((dbLane) => res.json(dbLane));
   });
 
   // DELETE route for deleting posts
@@ -67,6 +81,33 @@ module.exports = (app) => {
       },
     }).then((dbPallet) => res.json(dbPallet));
   });
+
+  // PUT route for updating lanes
+  app.put('/api/lanes/:name', (req, res) => {
+    console.log('PUT Lane',req.body);
+    const condition = `name = ${req.params.name}`
+    console.log('condition',condition)
+    db.Lane.update(
+      {
+        isPriority: req.body.isPriority,
+      },
+      condition,
+      (result) => {
+        if (result.changedRows === 0) {
+          return res.status(404).end();
+        }
+        res.status(200).end();
+      }
+    ).then((dbLane) => res.json(dbLane));
+  });
+
+  // PUT route for updating posts
+  app.put('/api/laneDestroy', (req, res) => {
+    db.Lane.destroy({
+      where: {},
+      truncate: true
+    }).then((dbLane) => res.json(dbLane));
+  });  
 
   // PUT route for updating posts
   app.put('/api/destroy', (req, res) => {

@@ -1,7 +1,23 @@
 // const { now } = require("sequelize/types/lib/utils");
 
 $(document).ready(function() {
-    // var city=prompt("name of the city?");
+    // Set the date we're counting down to
+    var count = 30
+    var countdown = count * 60 * 1000;
+    var timerId = setInterval(function(){
+        countdown -= 1000;
+        var min = Math.floor(countdown / (60 * 1000));
+        //var sec = Math.floor(countdown - (min * 60 * 1000));  // wrong
+        var sec = Math.floor((countdown - (min * 60 * 1000)) / 1000);  //correct
+
+        if (countdown <= 0) {
+            // alert(`${count} min!`);
+            clearInterval(timerId);
+            //doSomething();
+        } else {
+            $("#refresh").html(`refreshing in ${min}:${sec} seconds`);
+        }
+    }, 1000); //1000ms. = 1sec.
 
     const pictureArray=[
         '2560x1080-Bento.png',
@@ -159,7 +175,7 @@ $(document).ready(function() {
     }
 
     function initPallet(pallet) {
-        console.log('initPallet',pallet)
+        // console.log('initPallet',pallet)
         for (var i=0;i<pallet.length;i++){
             if (!(pallet[i].date === null)){
                 const palletDate=new Date(pallet[i].date)
@@ -288,7 +304,7 @@ $(document).ready(function() {
         const table6=[];
         const table7=[];
         const prevLane=[];
-        console.log('checkEmptySlot');
+        // console.log('checkEmptySlot');
         // console.log('   before boucle per lane');
         for (var i=0;i<pallet.length;i++){
             if (prevLane[parseInt(pallet[i].location.substring(4,5))] === undefined) {
@@ -410,11 +426,6 @@ $(document).ready(function() {
             tablePallet.push(table7[j])
         }
 
-        // db.Pallet.destroy({
-        //     where: {},
-        //     truncate: true
-        //   })
-        
         fetch(`/api/destroy`, {
             method: 'PUT',
             headers: {
@@ -439,7 +450,7 @@ $(document).ready(function() {
     };
 
     const getPallet = () => {
-        console.log('getPallet');
+        // console.log('getPallet');
         fetch(`/api/pallets/`, {
             method: 'GET',
             headers: {
@@ -450,7 +461,7 @@ $(document).ready(function() {
         .then((data) => {
             // console.log('getPallet')
             if (data) {
-            console.log(`Success in grabbing all pallet`, data);
+            // console.log(`Success in grabbing all pallet`, data);
             myData=data
             $('#PalletQty').text(data.length)
             checkEmptySlot(data)
@@ -470,7 +481,7 @@ $(document).ready(function() {
 
     // Event handler for when a user submits a post
     const submitPallet = (pallet) => {
-        console.log('submitPallet')
+        // console.log('submitPallet')
         fetch('/api/pallets', {
         method: 'POST',
         headers: {
@@ -499,15 +510,15 @@ $(document).ready(function() {
         })
         .then ((response) => response.json())
         .then ((data) => {
-            console.log('check pallet',data)
-            console.log('createPallet')
+            // console.log('check pallet',data)
+            // console.log('createPallet')
             if (data === null){
                 const laneNum=$(`.lane${laneNB}`)
                 if (palletNum[0].value.length === 0) {
                     alert('Please enter a pallet ID');
                 } else {
-                    console.log('create in lane',laneNB)
-                    console.log('pallet',palletNum[0].value)
+                    // console.log('create in lane',laneNB)
+                    // console.log('pallet',palletNum[0].value)
                     for (var i=1;i++;i<16){
                         if (laneNum[0].children[i].className === "hidden") {
                             // console.log("indice",i)
@@ -573,7 +584,7 @@ $(document).ready(function() {
     });
 
     const removePallet = (palletID) => {
-        console.log('removePallet')
+        // console.log('removePallet')
         fetch(`/api/pallets/${palletID}`, {
             method: 'DELETE',
             headers: {
@@ -584,7 +595,7 @@ $(document).ready(function() {
         .then((data) => {
             // console.log('getPallet')
             if (data) {
-                console.log(`Success in deleting single pallet`, data);
+                // console.log(`Success in deleting single pallet`, data);
 
                 // getPallet()
 
@@ -600,7 +611,7 @@ $(document).ready(function() {
     };
 
     const searchPallet = (pallet) => {
-        console.log('searchPallet')
+        // console.log('searchPallet')
         fetch(`/api/name/${pallet}`, {
             method: 'GET',
             headers: {
@@ -611,7 +622,7 @@ $(document).ready(function() {
         .then((data) => {
             // console.log('getPallet')
             if (data) {
-                console.log(`Success in grabbing single pallet`, data);
+                // console.log(`Success in grabbing single pallet`, data);
         
                 removePallet(data.id)
                 switch (data.location.substring(4,5)) {
@@ -648,8 +659,8 @@ $(document).ready(function() {
     };
 
     $("#subPallet").click(function(){
-        console.log("Remove Pallet clicked!!!")
-        console.log('pallet scan',$('#palletSubID')[0].value)
+        // console.log("Remove Pallet clicked!!!")
+        // console.log('pallet scan',$('#palletSubID')[0].value)
         const palletName=$('#palletSubID')[0].value
         if (palletName === 0){
             alert("No Scan Pallet Name for Deletion")
@@ -660,19 +671,57 @@ $(document).ready(function() {
     });
 
     const priorityLane = (laneNB) => {
-        if(laneNB===0){
-            for (var i=1;i<8;i++){
+        var lane=[
+            {
+                name: 'Lane1',
+                isPriority: 0,
+            },
+            {
+                name: 'Lane2',
+                isPriority: 0,
+            },
+            {
+                name: 'Lane3',
+                isPriority: 0,
+            },
+            {
+                name: 'Lane4',
+                isPriority: 0,
+            },
+            {
+                name: 'Lane5',
+                isPriority: 0,
+            },
+            {
+                name: 'Lane6',
+                isPriority: 0,
+            },
+            {
+                name: 'Lane7',
+                isPriority: 0,
+            },
+        ];
+
+        for (var i=0;i<7;i++){
+            if (i===laneNB-1){
+                lane[i].isPriority=true
+                let j=i+1
+                console.log('j',j)
+                $('.lane'+j.toString()).css('background-color','cyan')
+                fetch(`/api/lanes/${lane[i].name}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(lane[i]),
+                })
+                .then((response) => {
+                    console.log('reponse API PUT')
+                    $('.lane'+j.toString()).css('background-color','cyan')
+                    response.json()
+                })            
+            } else {
                 $('.lane'+i.toString()).css('background-color','white')
-            }
-        } else {
-            for (var i=1;i<8;i++){
-                if (i===laneNB){
-                    console.log('red',i)
-                    $('.lane'+i.toString()).css('background-color','cyan')
-                } else {
-                    console.log('red',i)
-                    $('.lane'+i.toString()).css('background-color','white')
-                }
             }
         }
         return
