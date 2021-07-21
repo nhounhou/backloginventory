@@ -15,7 +15,23 @@ $(document).ready(function() {
             clearInterval(timerId);
             //doSomething();
         } else {
-            $("#refresh").html(`refreshing in ${min}:${sec} seconds`);
+            if (min === 0){
+                if (sec === 1){
+                    $("#refresh").html(`refreshing in ${sec} second`);
+                    $('#refresh').css('color','red')
+                } else {
+                    if (sec < 11){
+                        $('#refresh').html(`refreshing in ${sec} seconds`);
+                        $('#refresh').css('color','red')
+                    } else {
+                        $('#refresh').html(`refreshing in ${sec} seconds`);
+                        $('#refresh').css('color','black')
+                    }
+                }
+            } else {
+                $("#refresh").html(`refreshing in ${min}:${sec} seconds`);
+                $('#refresh').css('color','black')
+            }
         }
     }, 1000); //1000ms. = 1sec.
 
@@ -704,24 +720,14 @@ $(document).ready(function() {
 
         for (var i=0;i<7;i++){
             if (i===laneNB-1){
-                lane[i].isPriority=true
-                let j=i+1
-                console.log('j',j)
-                $('.lane'+j.toString()).css('background-color','cyan')
-                fetch(`/api/lanes/${lane[i].name}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(lane[i]),
-                })
-                .then((response) => {
-                    console.log('reponse API PUT')
-                    $('.lane'+j.toString()).css('background-color','cyan')
-                    response.json()
-                })            
+                lane[i].isPriority=1
+                console.log('cyan',laneNB)
+                $('.lane'+laneNB.toString()).css('background-color','cyan')
             } else {
-                $('.lane'+i.toString()).css('background-color','white')
+                console.log('white',laneNB)
+                var j = i + 1
+                console.log('white',laneNB)
+                $('.lane'+j.toString()).css('background-color','white')
             }
         }
         return
