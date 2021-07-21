@@ -17,19 +17,19 @@ $(document).ready(function() {
         } else {
             if (min === 0){
                 if (sec === 1){
-                    $("#refresh").html(`refreshing in ${sec} second`);
+                    $("#refresh").html(`auto refresh in ${sec} second`);
                     $('#refresh').css('color','red')
                 } else {
                     if (sec < 11){
-                        $('#refresh').html(`refreshing in ${sec} seconds`);
+                        $('#refresh').html(`auto refresh in ${sec} seconds`);
                         $('#refresh').css('color','red')
                     } else {
-                        $('#refresh').html(`refreshing in ${sec} seconds`);
+                        $('#refresh').html(`auto refresh in ${sec} seconds`);
                         $('#refresh').css('color','black')
                     }
                 }
             } else {
-                $("#refresh").html(`refreshing in ${min}:${sec} seconds`);
+                $("#refresh").html(`auto refresh in ${min}:${sec} seconds`);
                 $('#refresh').css('color','black')
             }
         }

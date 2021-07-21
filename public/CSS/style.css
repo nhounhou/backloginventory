@@ -17,9 +17,13 @@ h2 {
   text-align: center;
   height: 150px;
   border: 2px dotted green;
-
   border-radius: 45%;
   background-color: goldenrod;
+}
+
+h3 {
+  color: #158cbb;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
 
 button, input, .header {
@@ -50,6 +54,35 @@ img {
   height: 200px;
   width: auto;
 } */
+
+.navbar-side {
+  background-color: grey;
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 95vh;
+  width: 250px;
+}
+
+.vertical-menu {
+  width: 200px;
+}
+
+.vertical-menu a {
+  background-color: #eee;
+  color: black;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+}
+
+.vertical-menu a:hover {
+  background-color: #ccc;
+}
+
+.vertical-menu a.active {
+  background-color: #04AA6D;
+  color: white;
+}
 
 #lenovo {
   width: auto;
@@ -88,8 +121,16 @@ img {
   margin: 20px;
 }
 
+#photoHREF {
+  padding-left: 20px;
+}
+
 #clearPriority {
   background-color: red;
+}
+
+#blank,#refresh {
+  background-color: white;
 }
 
 .modal {

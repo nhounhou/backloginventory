@@ -11,251 +11,264 @@
         <link rel="stylesheet" href="./CSS/style.css" />
     </head>
     <body>
-        <div class="row header">
-            <div class='col-sm-4'>
-                <h1>NRC Bulk BackLog</h1>
-            </div>
-            <div class='col-sm-2'>
-                <div class="row">
-                    <h3>Pallet Quantity</h3>
-                </div>
-                <div class="row">
-                    <h3 id='PalletQty'></h3>
-                </div>
-                <div class="row">
-                    <h6 id='refresh'></h6>
+        <div class='row'>
+            <div class='col-md-2 navbar-side'>
+                <div class="vertical-menu">
+                    <a href="#" class="active">Home</a>
+                    <a href="#" id="modal-btn">Add Pallet</a>
+                    <a href="#" id="modal-sub-btn">Remove Pallet</a>
+                    <a href="#" id="modal-lane-btn">Lane Priority</a>
+                    <a href="#" id="refresh"></a>
                 </div>
             </div>
-            <div class='col-sm-3'>
-                <div class='row'>
-                    <a>
-                        <div>
-                            <!-- <img id='lenovo' src='/pictures/LenovoLogos.jpg'> -->
-                            <h2>Your NRC Logo Here</h2>
+            <div class='col-md-9'>
+                <div class="row header">
+                    <div class='col-sm-4'>
+                        <h1>NRC Bulk BackLog</h1>
+                    </div>
+                    <div class='col-sm-2'>
+                        <div class="row">
+                            <h3>Pallet Quantity</h3>
                         </div>
-                    </a>
-                </div>
-                <div class='row'>
-                    <p id='photoTag'></p>
-                </div>
-            </div>
-        </div>
-        <div class='row '>
-            <!-- <div class='col-sm-3'> -->
-                <div class='row'>
-                    <a id='photoHREF'>
-                        <p class='row-image1'></p>
-                        <p class='row-image2'></p>
-                        <p class='row-image3'></p>
-                        <p class='row-image4'></p>
-                    </a>
-                </div>
-                <div class='row'>
-                    <p id='photoTag'></p>
-                </div>
-            <!-- </div> -->
-        </div>
-        <div class="row classBody">
-            <!-- <button id="addPallet">Add Pallet</button> -->
-            <button id="modal-sub-btn">Remove Pallet</button>
-            <button id="modal-btn">Add Pallet</button>
-            <button id="modal-lane-btn">Lane Priority</button>
-            <div class="modal">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1>Choose the lane to put the pallet in</h1>
-                        <span class="close-btn">&times;</span>
+                        <div class="row">
+                            <h3 id='PalletQty'></h3>
+                        </div>
+                        <!-- <div class="row">
+                            <h6 id='refresh'></h6>
+                        </div> -->
                     </div>
-                    <div class="row">
-                        <input id="palletID" type="text" name="pallet" placeholder="Pallet ID" />
-                    </div>
-                    <div class="row">
-                        <input id="comments" type="textarea" name="comment" placeholder="Comments" />
-                    </div>
-                    <div class="modal-content">
-                        <!-- <p>this is the text inside the modal</p> -->
-                        <button id='laneNum1'>Lane1</button>
-                        <button id='laneNum2'>Lane2</button>
-                        <button id='laneNum3'>Lane3</button>
-                        <button id='laneNum4'>Lane4</button>
-                        <button id='laneNum5'>Lane5</button>
-                        <button id='laneNum6'>Lane6</button>
-                        <button id='laneNum7'>Lane7</button>
+                    <div class='col-sm-3'>
+                        <div class='row'>
+                            <a>
+                                <div>
+                                    <!-- <img id='lenovo' src='/pictures/LenovoLogos.jpg'> -->
+                                    <h2>Your NRC Logo Here</h2>
+                                </div>
+                            </a>
+                        </div>
+                        <div class='row'>
+                            <p id='photoTag'></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-sub">
-                <div class="modal-sub-content">
-                    <div class="modal-sub-header">
-                        <h1>Pallet to be deleted</h1>
-                        <span class="close-sub-btn">&times;</span>
+                <div class='row '>
+                    <!-- <div class='col-sm-3'> -->
+                        <div class='row'>
+                            <a id='photoHREF'>
+                                <p class='row-image1'></p>
+                                <p class='row-image2'></p>
+                                <p class='row-image3'></p>
+                                <p class='row-image4'></p>
+                            </a>
+                        </div>
+                        <div class='row'>
+                            <p id='photoTag'></p>
+                        </div>
+                    <!-- </div> -->
+                </div>
+                <div class="row classBody">
+                    <!-- <button id="addPallet">Add Pallet</button> -->
+                    <!-- <button id="modal-sub-btn">Remove Pallet</button>
+                    <button id="modal-btn">Add Pallet</button>
+                    <button id="modal-lane-btn">Lane Priority</button> -->
+                    <div class="modal">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1>Choose the lane to put the pallet in</h1>
+                                <span class="close-btn">&times;</span>
+                            </div>
+                            <div class="row">
+                                <input id="palletID" type="text" name="pallet" placeholder="Pallet ID" />
+                            </div>
+                            <div class="row">
+                                <input id="comments" type="textarea" name="comment" placeholder="Comments" />
+                            </div>
+                            <div class="modal-content">
+                                <!-- <p>this is the text inside the modal</p> -->
+                                <button id='laneNum1'>Lane1</button>
+                                <button id='laneNum2'>Lane2</button>
+                                <button id='laneNum3'>Lane3</button>
+                                <button id='laneNum4'>Lane4</button>
+                                <button id='laneNum5'>Lane5</button>
+                                <button id='laneNum6'>Lane6</button>
+                                <button id='laneNum7'>Lane7</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="row">
-                        <input id="palletSubID" type="text" name="pallet" placeholder="Pallet ID" />
+                    <div class="modal-sub">
                         <div class="modal-sub-content">
-                            <!-- <p>this is the text inside the modal</p> -->
-                            <button id='subPallet'>Delete</button>
+                            <div class="modal-sub-header">
+                                <h1>Pallet to be deleted</h1>
+                                <span class="close-sub-btn">&times;</span>
+                            </div>
+                            <div class="row">
+                                <input id="palletSubID" type="text" name="pallet" placeholder="Pallet ID" />
+                                <div class="modal-sub-content">
+                                    <!-- <p>this is the text inside the modal</p> -->
+                                    <button id='subPallet'>Delete</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="modal-lane">
-                <div class="modal-lane-content">
-                    <div class="modal-lane-header">
-                        <h1>Setup Lane Priority</h1>
-                        <span class="close-lane-btn">&times;</span>
-                    </div>
-                    <div class="row">
+                    <div class="modal-lane">
                         <div class="modal-lane-content">
-                            <!-- <p>this is the text inside the modal</p> -->
-                            <button id='priorityLane1'>Lane 1</button>
-                            <button id='priorityLane2'>Lane 2</button>
-                            <button id='priorityLane3'>Lane 3</button>
-                            <button id='priorityLane4'>Lane 4</button>
-                            <button id='priorityLane5'>Lane 5</button>
-                            <button id='priorityLane6'>Lane 6</button>
-                            <button id='priorityLane7'>Lane 7</button>
-                            <button id='clearPriority'>Clear</button>
+                            <div class="modal-lane-header">
+                                <h1>Setup Lane Priority</h1>
+                                <span class="close-lane-btn">&times;</span>
+                            </div>
+                            <div class="row">
+                                <div class="modal-lane-content">
+                                    <!-- <p>this is the text inside the modal</p> -->
+                                    <button id='priorityLane1'>Lane 1</button>
+                                    <button id='priorityLane2'>Lane 2</button>
+                                    <button id='priorityLane3'>Lane 3</button>
+                                    <button id='priorityLane4'>Lane 4</button>
+                                    <button id='priorityLane5'>Lane 5</button>
+                                    <button id='priorityLane6'>Lane 6</button>
+                                    <button id='priorityLane7'>Lane 7</button>
+                                    <button id='clearPriority'>Clear</button>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="col-sm-1 lane7">
+                        <h3>Lane 7</h3>
+                        <hr>
+                        <h4 class="hidden">Pallet1</h4>
+                        <h4 class="hidden">Pallet2</h4>
+                        <h4 class="hidden">Pallet3</h4>
+                        <h4 class="hidden">Pallet4</h4>
+                        <h4 class="hidden">Pallet5</h4>
+                        <h4 class="hidden">Pallet6</h4>
+                        <h4 class="hidden">Pallet7</h4>
+                        <h4 class="hidden">Pallet8</h4>
+                        <h4 class="hidden">Pallet9</h4>
+                        <h4 class="hidden">Pallet10</h4>
+                        <h4 class="hidden">Pallet11</h4>
+                        <h4 class="hidden">Pallet12</h4>
+                        <h4 class="hidden">Pallet13</h4>
+                        <h4 class="hidden">Pallet14</h4>
+                        <h4 class="hidden">Pallet15</h4>
+                    </div>
+                    <div class="col-sm-1 lane6">
+                        <h3>Lane 6</h3>
+                        <hr>
+                        <h4 class="hidden">Pallet1</h4>
+                        <h4 class="hidden">Pallet2</h4>
+                        <h4 class="hidden">Pallet3</h4>
+                        <h4 class="hidden">Pallet4</h4>
+                        <h4 class="hidden">Pallet5</h4>
+                        <h4 class="hidden">Pallet6</h4>
+                        <h4 class="hidden">Pallet7</h4>
+                        <h4 class="hidden">Pallet8</h4>
+                        <h4 class="hidden">Pallet9</h4>
+                        <h4 class="hidden">Pallet10</h4>
+                        <h4 class="hidden">Pallet11</h4>
+                        <h4 class="hidden">Pallet12</h4>
+                        <h4 class="hidden">Pallet13</h4>
+                        <h4 class="hidden">Pallet14</h4>
+                        <h4 class="hidden">Pallet15</h4>
+                    </div>
+                    <div class="col-sm-1 lane5">
+                        <h3>Lane 5</h3>
+                        <hr>
+                        <h4 class="hidden">Pallet1</h4>
+                        <h4 class="hidden">Pallet2</h4>
+                        <h4 class="hidden">Pallet3</h4>
+                        <h4 class="hidden">Pallet4</h4>
+                        <h4 class="hidden">Pallet5</h4>
+                        <h4 class="hidden">Pallet6</h4>
+                        <h4 class="hidden">Pallet7</h4>
+                        <h4 class="hidden">Pallet8</h4>
+                        <h4 class="hidden">Pallet9</h4>
+                        <h4 class="hidden">Pallet10</h4>
+                        <h4 class="hidden">Pallet11</h4>
+                        <h4 class="hidden">Pallet12</h4>
+                        <h4 class="hidden">Pallet13</h4>
+                        <h4 class="hidden">Pallet14</h4>
+                        <h4 class="hidden">Pallet15</h4>
+                    </div>
+                    <div class="col-sm-1 lane4">
+                        <h3>Lane 4</h3>
+                        <hr>
+                        <h4 class="hidden">Pallet1</h4>
+                        <h4 class="hidden">Pallet2</h4>
+                        <h4 class="hidden">Pallet3</h4>
+                        <h4 class="hidden">Pallet4</h4>
+                        <h4 class="hidden">Pallet5</h4>
+                        <h4 class="hidden">Pallet6</h4>
+                        <h4 class="hidden">Pallet7</h4>
+                        <h4 class="hidden">Pallet8</h4>
+                        <h4 class="hidden">Pallet9</h4>
+                        <h4 class="hidden">Pallet10</h4>
+                        <h4 class="hidden">Pallet11</h4>
+                        <h4 class="hidden">Pallet12</h4>
+                        <h4 class="hidden">Pallet13</h4>
+                        <h4 class="hidden">Pallet14</h4>
+                        <h4 class="hidden">Pallet15</h4>
+                    </div>
+                    <div class="col-sm-1 lane3">
+                        <h3>Lane 3</h3>
+                        <hr>
+                        <h4 class="hidden">Pallet1</h4>
+                        <h4 class="hidden">Pallet2</h4>
+                        <h4 class="hidden">Pallet3</h4>
+                        <h4 class="hidden">Pallet4</h4>
+                        <h4 class="hidden">Pallet5</h4>
+                        <h4 class="hidden">Pallet6</h4>
+                        <h4 class="hidden">Pallet7</h4>
+                        <h4 class="hidden">Pallet8</h4>
+                        <h4 class="hidden">Pallet9</h4>
+                        <h4 class="hidden">Pallet10</h4>
+                        <h4 class="hidden">Pallet11</h4>
+                        <h4 class="hidden">Pallet12</h4>
+                        <h4 class="hidden">Pallet13</h4>
+                        <h4 class="hidden">Pallet14</h4>
+                        <h4 class="hidden">Pallet15</h4>
+                    </div>
+                    <div class="col-sm-1 lane2">
+                        <h3>Lane 2</h3>
+                        <hr>
+                        <h4 class="hidden">Pallet1</h4>
+                        <h4 class="hidden">Pallet2</h4>
+                        <h4 class="hidden">Pallet3</h4>
+                        <h4 class="hidden">Pallet4</h4>
+                        <h4 class="hidden">Pallet5</h4>
+                        <h4 class="hidden">Pallet6</h4>
+                        <h4 class="hidden">Pallet7</h4>
+                        <h4 class="hidden">Pallet8</h4>
+                        <h4 class="hidden">Pallet9</h4>
+                        <h4 class="hidden">Pallet10</h4>
+                        <h4 class="hidden">Pallet11</h4>
+                        <h4 class="hidden">Pallet12</h4>
+                        <h4 class="hidden">Pallet13</h4>
+                        <h4 class="hidden">Pallet14</h4>
+                        <h4 class="hidden">Pallet15</h4>
+                    </div>
+                    <div class="col-sm-1 lane1">
+                        <h3>Lane 1</h3>
+                        <hr>
+                        <h4 class="hidden">Pallet1</h4>
+                        <h4 class="hidden">Pallet2</h4>
+                        <h4 class="hidden">Pallet3</h4>
+                        <h4 class="hidden">Pallet4</h4>
+                        <h4 class="hidden">Pallet5</h4>
+                        <h4 class="hidden">Pallet6</h4>
+                        <h4 class="hidden">Pallet7</h4>
+                        <h4 class="hidden">Pallet8</h4>
+                        <h4 class="hidden">Pallet9</h4>
+                        <h4 class="hidden">Pallet10</h4>
+                        <h4 class="hidden">Pallet11</h4>
+                        <h4 class="hidden">Pallet12</h4>
+                        <h4 class="hidden">Pallet13</h4>
+                        <h4 class="hidden">Pallet14</h4>
+                        <h4 class="hidden">Pallet15</h4>
                     </div>
                 </div>
             </div>
-        </div> 
-        <div class="row">
-            <div class="col-sm-1 lane7">
-                <h3>Lane 7</h3>
-                <hr>
-                <h4 class="hidden">Pallet1</h4>
-                <h4 class="hidden">Pallet2</h4>
-                <h4 class="hidden">Pallet3</h4>
-                <h4 class="hidden">Pallet4</h4>
-                <h4 class="hidden">Pallet5</h4>
-                <h4 class="hidden">Pallet6</h4>
-                <h4 class="hidden">Pallet7</h4>
-                <h4 class="hidden">Pallet8</h4>
-                <h4 class="hidden">Pallet9</h4>
-                <h4 class="hidden">Pallet10</h4>
-                <h4 class="hidden">Pallet11</h4>
-                <h4 class="hidden">Pallet12</h4>
-                <h4 class="hidden">Pallet13</h4>
-                <h4 class="hidden">Pallet14</h4>
-                <h4 class="hidden">Pallet15</h4>
-            </div>
-            <div class="col-sm-1 lane6">
-                <h3>Lane 6</h3>
-                <hr>
-                <h4 class="hidden">Pallet1</h4>
-                <h4 class="hidden">Pallet2</h4>
-                <h4 class="hidden">Pallet3</h4>
-                <h4 class="hidden">Pallet4</h4>
-                <h4 class="hidden">Pallet5</h4>
-                <h4 class="hidden">Pallet6</h4>
-                <h4 class="hidden">Pallet7</h4>
-                <h4 class="hidden">Pallet8</h4>
-                <h4 class="hidden">Pallet9</h4>
-                <h4 class="hidden">Pallet10</h4>
-                <h4 class="hidden">Pallet11</h4>
-                <h4 class="hidden">Pallet12</h4>
-                <h4 class="hidden">Pallet13</h4>
-                <h4 class="hidden">Pallet14</h4>
-                <h4 class="hidden">Pallet15</h4>
-            </div>
-            <div class="col-sm-1 lane5">
-                <h3>Lane 5</h3>
-                <hr>
-                <h4 class="hidden">Pallet1</h4>
-                <h4 class="hidden">Pallet2</h4>
-                <h4 class="hidden">Pallet3</h4>
-                <h4 class="hidden">Pallet4</h4>
-                <h4 class="hidden">Pallet5</h4>
-                <h4 class="hidden">Pallet6</h4>
-                <h4 class="hidden">Pallet7</h4>
-                <h4 class="hidden">Pallet8</h4>
-                <h4 class="hidden">Pallet9</h4>
-                <h4 class="hidden">Pallet10</h4>
-                <h4 class="hidden">Pallet11</h4>
-                <h4 class="hidden">Pallet12</h4>
-                <h4 class="hidden">Pallet13</h4>
-                <h4 class="hidden">Pallet14</h4>
-                <h4 class="hidden">Pallet15</h4>
-            </div>
-            <div class="col-sm-1 lane4">
-                <h3>Lane 4</h3>
-                <hr>
-                <h4 class="hidden">Pallet1</h4>
-                <h4 class="hidden">Pallet2</h4>
-                <h4 class="hidden">Pallet3</h4>
-                <h4 class="hidden">Pallet4</h4>
-                <h4 class="hidden">Pallet5</h4>
-                <h4 class="hidden">Pallet6</h4>
-                <h4 class="hidden">Pallet7</h4>
-                <h4 class="hidden">Pallet8</h4>
-                <h4 class="hidden">Pallet9</h4>
-                <h4 class="hidden">Pallet10</h4>
-                <h4 class="hidden">Pallet11</h4>
-                <h4 class="hidden">Pallet12</h4>
-                <h4 class="hidden">Pallet13</h4>
-                <h4 class="hidden">Pallet14</h4>
-                <h4 class="hidden">Pallet15</h4>
-            </div>
-            <div class="col-sm-1 lane3">
-                <h3>Lane 3</h3>
-                <hr>
-                <h4 class="hidden">Pallet1</h4>
-                <h4 class="hidden">Pallet2</h4>
-                <h4 class="hidden">Pallet3</h4>
-                <h4 class="hidden">Pallet4</h4>
-                <h4 class="hidden">Pallet5</h4>
-                <h4 class="hidden">Pallet6</h4>
-                <h4 class="hidden">Pallet7</h4>
-                <h4 class="hidden">Pallet8</h4>
-                <h4 class="hidden">Pallet9</h4>
-                <h4 class="hidden">Pallet10</h4>
-                <h4 class="hidden">Pallet11</h4>
-                <h4 class="hidden">Pallet12</h4>
-                <h4 class="hidden">Pallet13</h4>
-                <h4 class="hidden">Pallet14</h4>
-                <h4 class="hidden">Pallet15</h4>
-            </div>
-            <div class="col-sm-1 lane2">
-                <h3>Lane 2</h3>
-                <hr>
-                <h4 class="hidden">Pallet1</h4>
-                <h4 class="hidden">Pallet2</h4>
-                <h4 class="hidden">Pallet3</h4>
-                <h4 class="hidden">Pallet4</h4>
-                <h4 class="hidden">Pallet5</h4>
-                <h4 class="hidden">Pallet6</h4>
-                <h4 class="hidden">Pallet7</h4>
-                <h4 class="hidden">Pallet8</h4>
-                <h4 class="hidden">Pallet9</h4>
-                <h4 class="hidden">Pallet10</h4>
-                <h4 class="hidden">Pallet11</h4>
-                <h4 class="hidden">Pallet12</h4>
-                <h4 class="hidden">Pallet13</h4>
-                <h4 class="hidden">Pallet14</h4>
-                <h4 class="hidden">Pallet15</h4>
-            </div>
-            <div class="col-sm-1 lane1">
-                <h3>Lane 1</h3>
-                <hr>
-                <h4 class="hidden">Pallet1</h4>
-                <h4 class="hidden">Pallet2</h4>
-                <h4 class="hidden">Pallet3</h4>
-                <h4 class="hidden">Pallet4</h4>
-                <h4 class="hidden">Pallet5</h4>
-                <h4 class="hidden">Pallet6</h4>
-                <h4 class="hidden">Pallet7</h4>
-                <h4 class="hidden">Pallet8</h4>
-                <h4 class="hidden">Pallet9</h4>
-                <h4 class="hidden">Pallet10</h4>
-                <h4 class="hidden">Pallet11</h4>
-                <h4 class="hidden">Pallet12</h4>
-                <h4 class="hidden">Pallet13</h4>
-                <h4 class="hidden">Pallet14</h4>
-                <h4 class="hidden">Pallet15</h4>
-            </div>
-        </div>
+        </div>  
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="./JS/script.js"></script>
     </body>
