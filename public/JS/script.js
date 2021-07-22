@@ -23,6 +23,9 @@ $(document).ready(function() {
                     if (sec < 11){
                         $('#refresh').html(`auto refresh in ${sec} seconds`);
                         $('#refresh').css('color','red')
+                    } else if (sec < 31){
+                        $('#refresh').html(`auto refresh in ${sec} seconds`);
+                        $('#refresh').css('color','orange')
                     } else {
                         $('#refresh').html(`auto refresh in ${sec} seconds`);
                         $('#refresh').css('color','black')
@@ -466,8 +469,8 @@ $(document).ready(function() {
     };
 
     const getPallet = () => {
-        // console.log('getPallet');
-        fetch(`/api/pallets/`, {
+        // adding GET lane to display priority Lane
+        fetch(`/api/lanes/`, {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
@@ -475,17 +478,37 @@ $(document).ready(function() {
         })
         .then((response) => response.json())
         .then((data) => {
-            // console.log('getPallet')
             if (data) {
-            // console.log(`Success in grabbing all pallet`, data);
-            myData=data
-            $('#PalletQty').text(data.length)
-            checkEmptySlot(data)
-            // Populate the form with the existing post
-            // titleInput.value = data.name;
-            // bodyInput.value = data.comment;
-            // postCategorySelect.value = data.location;
-            // initPallet(data)    
+                console.log(`Success in grabbing all Lanes`, data);
+                if (data.length>0){
+                    $(`.${data[0].name}`).css('background-color','cyan')
+                }
+
+                // console.log('getPallet');
+                fetch(`/api/pallets/`, {
+                    method: 'GET',
+                    headers: {
+                    'Content-Type': 'application/json',
+                    },
+                })
+                .then((response) => response.json())
+                .then((data) => {
+                    // console.log('getPallet')
+                    if (data) {
+                    // console.log(`Success in grabbing all pallet`, data);
+                    myData=data
+                    $('#PalletQty').text(data.length)
+                    checkEmptySlot(data)
+                    // Populate the form with the existing post
+                    // titleInput.value = data.name;
+                    // bodyInput.value = data.comment;
+                    // postCategorySelect.value = data.location;
+                    // initPallet(data)    
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
             }
         })
         .catch((error) => {
@@ -687,6 +710,18 @@ $(document).ready(function() {
     });
 
     const priorityLane = (laneNB) => {
+        if (laneNB===0) {
+            fetch(`/api/laneDestroy`, {
+                method: 'PUT',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+            })
+            .then((response) => {
+                response.json()
+            })
+        };
+
         var lane=[
             {
                 name: 'Lane1',
@@ -721,12 +756,41 @@ $(document).ready(function() {
         for (var i=0;i<7;i++){
             if (i===laneNB-1){
                 lane[i].isPriority=1
-                console.log('cyan',laneNB)
-                $('.lane'+laneNB.toString()).css('background-color','cyan')
+                fetch(`/api/laneDestroy`, {
+                    method: 'PUT',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                })
+                .then((response) => {
+                    response.json()
+                    $('.lane'+laneNB.toString()).css('background-color','cyan')
+                    console.log('Lane',laneNB)
+                    const myLane={
+                        name: 'lane'+laneNB.toString(),
+                        isPriority: 1,
+                    }
+                    // lane[i].isPriority=1
+                    fetch('/api/lanes', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(myLane),
+                    })
+                    .then((response) => {
+                        response.json()
+                    })
+                    .then((data) => {
+                        console.log('Success in creating lane priority:', data);
+                        // window.location.href = '/';
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });          
+                })
             } else {
-                console.log('white',laneNB)
                 var j = i + 1
-                console.log('white',laneNB)
                 $('.lane'+j.toString()).css('background-color','white')
             }
         }
