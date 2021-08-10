@@ -227,6 +227,7 @@ $(document).ready(function() {
 
     function initPallet(pallet) {
         // console.log('initPallet',pallet)
+        let palletColor=''
         for (var i=0;i<pallet.length;i++){
             if (!(pallet[i].date === null)){
                 const palletDate=new Date(pallet[i].date)
@@ -243,11 +244,11 @@ $(document).ready(function() {
             }
             // console.log('delay day',daysDifference)
             if (daysDifference>10) {
-                const palletColor="palevioletred"
+                palletColor="palevioletred"
             } else if (daysDifference>5) {
-                const palletColor="orange"
+                palletColor="orange"
             } else {
-                const palletColor="lightseagreen"
+                palletColor="lightseagreen"
             }
 
             const myLane=pallet[i].location.substring(4,5)
