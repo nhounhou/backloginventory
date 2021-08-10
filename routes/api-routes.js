@@ -9,6 +9,12 @@ module.exports = (app) => {
     db.Lane.findAll({}).then((dbLane) => res.json(dbLane));
   });
 
+  // GET route for getting all of the lanes priority
+  app.get('/api/map/', (req, res) => {
+    console.log('findAll Map')
+    db.LaneMap.findAll({}).then((dbMap) => res.json(dbMap));
+  });
+
   // GET route for getting all of the pallets
   // console.log("db:",db.sequelize.options)
   app.get('/api/pallets/', (req, res) => {
@@ -53,6 +59,14 @@ module.exports = (app) => {
       date: req.body.date,
       location: req.body.location,
     }).then((dbPallet) => res.json(dbPallet));
+  });
+
+  // POST route for saving a new Lane
+  app.post('/api/map', (req, res) => {
+    console.log('new Lane',req.body)
+    db.LaneMap.create({
+      name: req.body.name,
+    }).then((dbMap) => res.json(dbMap));
   });
 
   // POST route for saving a new post
@@ -107,6 +121,17 @@ module.exports = (app) => {
       where: {},
       truncate: true
     }).then((dbLane) => res.json(dbLane));
+  });  
+
+  // PUT route for updating posts
+  app.put('/api/laneMapDestroy/:name', (req, res) => {
+    console.log('delete lane',req)
+    db.LaneMap.delete({
+      where: {
+        name: req.params.name
+      },
+      // truncate: true
+    }).then((dbMap) => res.json(dbMap));
   });  
 
   // PUT route for updating posts

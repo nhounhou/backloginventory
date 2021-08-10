@@ -18,6 +18,8 @@
                     <a id="modal-btn">Add Pallet</a>
                     <a id="modal-sub-btn">Remove Pallet</a>
                     <a id="modal-lane-btn">Lane Priority</a>
+                    <a id="modal-addlane-btn">Add Lane</a>
+                    <a id="modal-deletelane-btn">Delete Lane</a>
                     <a id="refresh"></a>
                 </div>
             </div>
@@ -67,10 +69,6 @@
                     <!-- </div> -->
                 </div>
                 <div class="row classBody">
-                    <!-- <button id="addPallet">Add Pallet</button> -->
-                    <!-- <button id="modal-sub-btn">Remove Pallet</button>
-                    <button id="modal-btn">Add Pallet</button>
-                    <button id="modal-lane-btn">Lane Priority</button> -->
                     <div class="modal">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -131,8 +129,38 @@
                             </div>
                         </div>
                     </div>
+                    <div class="modal-addlane">
+                        <div class="modal-addlane-content">
+                            <div class="modal-addlane-header">
+                                <h1>Adding New lane in Backlog</h1>
+                                <span class="close-addlane-btn">&times;</span>
+                            </div>
+                            <div class="row">
+                                <div class="modal-addlane-content">
+                                    <!-- <p>this is the text inside the modal</p> -->
+                                    <input type='text' id='newLaneName' name='newLane' placeholder='Enter your lane here' />
+                                    <button id='addLane'>Add Lane</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-deletelane">
+                        <div class="modal-deletelane-content">
+                            <div class="modal-deletelane-header">
+                                <h1>Deleting existing lane from Backlog</h1>
+                                <span class="close-deletelane-btn">&times;</span>
+                            </div>
+                            <div class="row">
+                                <div class="modal-deletelane-content">
+                                    <!-- <p>this is the text inside the modal</p> -->
+                                    <input type='text' id='deleteLaneName' name='deleteLane' placeholder='Enter your lane here' />
+                                    <button id='deleteLane'>Delete Lane</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div> 
-                <div class="row">
+                <div class="row lanes">
                     <div class="col-sm-1 lane7">
                         <h3>Lane 7</h3>
                         <hr>

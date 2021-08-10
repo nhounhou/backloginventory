@@ -193,6 +193,38 @@ $(document).ready(function() {
         }
     }
 
+    //section to declare the Modal Form
+    let modalAddLaneBtn = document.getElementById("modal-addlane-btn")
+    let modalAddLane = document.querySelector(".modal-addlane")
+    let closeAddLaneBtn = document.querySelector(".close-addlane-btn")
+    modalAddLaneBtn.onclick = function(){
+        modalAddLane.style.display = "block"
+    }
+    closeAddLaneBtn.onclick = function(){
+        modalAddLane.style.display = "none"
+    }
+    window.onclick = function(e){
+        if(e.target == modalAddLane){
+            modalAddLane.style.display = "none"
+        }
+    }
+    
+    //section to declare the Modal Form
+    let modalDelLaneBtn = document.getElementById("modal-deletelane-btn")
+    let modalDelLane = document.querySelector(".modal-deletelane")
+    let closeDelLaneBtn = document.querySelector(".close-deletelane-btn")
+    modalDelLaneBtn.onclick = function(){
+        modalDelLane.style.display = "block"
+    }
+    closeDelLaneBtn.onclick = function(){
+        modalDelLane.style.display = "none"
+    }
+    window.onclick = function(e){
+        if(e.target == modalDelLane){
+            modalDelLane.style.display = "none"
+        }
+    }
+
     function initPallet(pallet) {
         // console.log('initPallet',pallet)
         for (var i=0;i<pallet.length;i++){
@@ -210,13 +242,12 @@ $(document).ready(function() {
                 var daysDifference=0
             }
             // console.log('delay day',daysDifference)
-            let palletColor='';
             if (daysDifference>10) {
-                palletColor="palevioletred"
+                const palletColor="palevioletred"
             } else if (daysDifference>5) {
-                palletColor="orange"
+                const palletColor="orange"
             } else {
-                palletColor="lightseagreen"
+                const palletColor="lightseagreen"
             }
 
             const myLane=pallet[i].location.substring(4,5)
@@ -484,7 +515,6 @@ $(document).ready(function() {
                     $(`.${data[0].name}`).css('background-color','cyan')
                 }
 
-                // console.log('getPallet');
                 fetch(`/api/pallets/`, {
                     method: 'GET',
                     headers: {
@@ -493,17 +523,10 @@ $(document).ready(function() {
                 })
                 .then((response) => response.json())
                 .then((data) => {
-                    // console.log('getPallet')
                     if (data) {
-                    // console.log(`Success in grabbing all pallet`, data);
                     myData=data
                     $('#PalletQty').text(data.length)
                     checkEmptySlot(data)
-                    // Populate the form with the existing post
-                    // titleInput.value = data.name;
-                    // bodyInput.value = data.comment;
-                    // postCategorySelect.value = data.location;
-                    // initPallet(data)    
                     }
                 })
                 .catch((error) => {
@@ -838,4 +861,71 @@ $(document).ready(function() {
         // getPallet()
     });
 
+    const addLane = (myLane) => {
+        const newLane={
+            name: myLane[0].value,
+        };
+
+        fetch('/api/map', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newLane),
+        })
+        .then((response) => {
+            response.json()
+        })
+        .then((data) => {
+            console.log('Success in submitting lane:', myLane);
+            const lanes=$('.lanes')
+            let div=$('<div></div>')
+            let h3=$('<h3></h3>')
+            const hr=$('<hr>')
+            h3.text(`${myLane[0].value}`);
+            div.append(h3);
+            div.append(hr)
+            for (var i=0;i<15;i++){
+                console.log(`adding pallet${i+1}`)
+                let h4=$('<h4></h4>')
+                h4.attr('class','hidden');
+                h4.text(`Pallet${i+1}`);
+                div.append(h4)
+            }
+            div.attr('class','col-sm-1 annex')
+            lanes.prepend(div);
+            // window.location.href = '/';
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });    
+    };
+
+    const deleteLane = (myLane) => {
+        const deleteLane={
+            name: myLane[0].value,
+        };
+        console.log('deleting lane',myLane)
+        fetch(`/api/laneMapDestroy/${myLane[0].value}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+        })
+        .then((response) => {
+            console.log('delete Lane Map successful')
+            response.json()
+        })
+    };
+
+    $('#addLane').click(function(){
+        // console.log('lane7 clicked')
+        const newLane=$('#newLaneName')
+        addLane(newLane)
+    });
+    $('#deleteLane').click(function(){
+        console.log('delete lane clicked')
+        const delLane=$('#deleteLaneName')
+        deleteLane(delLane)
+    });
 });
