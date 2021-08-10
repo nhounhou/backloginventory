@@ -250,7 +250,7 @@ $(document).ready(function() {
             } else {
                 palletColor="lightseagreen"
             }
-
+            console.log('palletColor',palletColor)
             const myLane=pallet[i].location.substring(4,5)
             const tiret=pallet[i].location.indexOf('-')
             const myPosition=pallet[i].location.substring(tiret+1,pallet[i].location.length)
