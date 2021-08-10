@@ -524,11 +524,12 @@ $(document).ready(function() {
                     },
                 })
                 .then((response) => response.json())
-                .then((data) => {
-                    if (data) {
-                    myData=data
-                    $('#PalletQty').text(data.length)
-                    checkEmptySlot(data)
+                .then((datas) => {
+                    console.log(`Success in grabbing all pallets`, datas);
+                    if (datas) {
+                    myData=datas
+                    $('#PalletQty').text(datas.length)
+                    checkEmptySlot(datas)
                     }
                 })
                 .catch((error) => {
