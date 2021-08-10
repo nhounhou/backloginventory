@@ -254,11 +254,12 @@ $(document).ready(function() {
             const myLane=pallet[i].location.substring(4,5)
             const tiret=pallet[i].location.indexOf('-')
             const myPosition=pallet[i].location.substring(tiret+1,pallet[i].location.length)
+            console.log('lane',myLane)
+            console.log('pos ',myPosition)
+            console.log('name',pallet[i].name)
+
             switch (myLane) {
                 case '1':
-                    // console.log('lane',myLane)
-                    // console.log('pos ',myPosition)
-                    // console.log('name',pallet[i].name)
                     laneNum1[0].children[parseInt(myPosition)].style.backgroundColor=palletColor
                     laneNum1[0].children[parseInt(myPosition)].className="shown"
                     laneNum1[0].children[parseInt(myPosition)].textContent=pallet[i].name
